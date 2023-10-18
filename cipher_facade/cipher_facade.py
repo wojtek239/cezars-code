@@ -4,13 +4,23 @@ from encrypting.encrypting import Encryptor
 
 class CipherFacade:
     def __init__(self):
-        pass
+
+        self.history = []
+        self.encryptor = Encryptor()
 
     def encrypt_word_with_key(self, text: str, shift: int):
-        # input text, shift
         encrypted_text = Encryptor.encrypt_word_with_key(text, shift)
-        # zapis do histori
-        # wyswietlenie informacji dla uzytkownika
+
+        self.history.append({
+            "input_text": text,
+            "shift": shift,
+            "encrypted_text": encrypted_text
+        })
+
+        print(f"Given text: {text}")
+        print(f"Shift: {shift}")
+        print(f"Encrypted text: {encrypted_text}")
+
         return encrypted_text
 
 # ...
