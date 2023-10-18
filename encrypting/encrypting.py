@@ -1,11 +1,11 @@
+ALPHABET_SIZE = 36
+
+
 class Encryptor:
     """encrypt given text by cezars-code"""
-    alphabet_size = 36
 
-    def __init__(self, shift):
-        self.shift = shift
-
-    def encrypt_word_with_key(self, word, key):
+    @staticmethod
+    def encrypt_word_with_key(word, shift):
         """encrypts word with given shift"""
         encrypted_word = ""
         for char in word:
@@ -16,7 +16,7 @@ class Encryptor:
                     base = ord("A")
                 else:
                     continue
-                shifted = (ord(char) - base + key) % self.alphabet_size
+                shifted = (ord(char) - base + shift) % ALPHABET_SIZE
                 encrypted_word += chr(base + shifted)
             else:
                 encrypted_word += char
