@@ -2,18 +2,17 @@ from encrypting.encrypting import Encryptor
 import unittest
 import pytest
 
-
-@pytest.mark.parametrize("text, shift, expected_result", [
-    ("hello", 3, "khoor"),
-    ("world", -3, "tloia"),
-    ("abc!123", 2, "cde!123"),
-    ("To be or not to be, that is the question.", 5, "Yt gj tw tsw ts gj, ymfy nx ymj"
-                                                     " vjxyjtrj"),
-    ("xyz", 3, "abc"),
-    ("aąbcćdeę", 36, "cęgfhijł"),
-    ("ąęćżźń", 3, "ćęłźźó")
-])
 class TestEncryptor(unittest.TestCase):
+    @pytest.mark.parametrize("text, shift, expected_result", [
+        ("hello", 3, "khoor"),
+        ("world", -3, "tloia"),
+        ("abc!123", 2, "cde!123"),
+        ("To be or not to be, that is the question.", 5, "Yt gj tw tsw ts gj, ymfy nx ymj"
+                                                         " vjxyjtrj"),
+        ("xyz", 3, "abc"),
+        ("aąbcćdeę", 36, "cęgfhijł"),
+        ("ąęćżźń", 3, "ćęłźźó")
+    ])
     def test_should_encrypt_word_with_key(self, shift, text, expected_result):
         if shift < 0:
             with pytest.raises(ValueError):
@@ -30,11 +29,11 @@ class TestEncryptor(unittest.TestCase):
 
         self.assertEqual(actual_result, expected_result)
 
-#   def test_should_encrypt_word_with_key_negative_shift(self):
+#   def test_encrypter_should_raise_exception_for_negative_shift(self):
 #        actual_result = Encryptor.encrypt_word_with_key("world", -3)
 #        expected_result = "tloia"
 #        self.assertEqual(actual_result, expected_result)
-
+# can't use if but need exeption TODO
     def test_should_encrypt_word_with_key_special_characters(self):
         actual_result = Encryptor.encrypt_word_with_key("abc!123", 2)
         expected_result = "cde!123"

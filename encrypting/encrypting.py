@@ -1,4 +1,4 @@
-ALPHABET_SIZE = 36
+from const import ALPHABET_SIZE
 
 
 class Encryptor:
@@ -21,3 +21,4 @@ class Encryptor:
             else:
                 encrypted_word += char
         return encrypted_word
+#TODO encrypt from file (sciezka dostepu)JSON

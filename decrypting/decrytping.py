@@ -1,4 +1,4 @@
-ALPHABET_SIZE = 36
+from const import ALPHABET_SIZE
 
 
 class Decryptor:
