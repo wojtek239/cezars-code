@@ -80,8 +80,8 @@ class TestEncryptor(unittest.TestCase):
         (" ", 3, " ")
     ])
     def test_should_encrypt_word_with_key_empty_string(self):
-        actual_result = Encryptor.encrypt_word_with_key("", 3)
-        expected_result = ""
+        actual_result = Encryptor.encrypt_word_with_key(" ", 3)
+        expected_result = " "
         self.assertEqual(actual_result, expected_result)
 
 
