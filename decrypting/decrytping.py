@@ -6,8 +6,9 @@ class Decryptor:
 
     @staticmethod
     def decrypt_word_with_key(encrypted_word, shift):
+        """decrypts word with given key"""
         decrypted_word = ""
-        for char in encrypted_word:
+        for char in decrypted_word:
             if char.isalpha():
                 if char.islower():
                     base = ord("a")
