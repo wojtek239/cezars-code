@@ -12,6 +12,7 @@ class CipherFacade:
             '2': self.decrypt_text,
             '3': self.show_history,
             '4': self.encrypt_text_from_file_and_save,
+            '5': self.save_to_file,
             '7': self.exit,
         }
         self.initialize()
@@ -32,7 +33,6 @@ class CipherFacade:
             5. Save to file 
             6. Import results from file to memory
             7. Exit 
-            file sa typu JSON
             '''
         )
         print(menu)
@@ -103,14 +103,13 @@ class CipherFacade:
             print(f"Given text: {text}")
             print(f"Shift: {shift}")
             print(f"Encrypted text: {encrypted_text}")
-            self.ask_to_save_to_history()
         except FileNotFoundError:
             print(f"File '{filename}' not found.")
         except Exception as e:
             print(f"An error occurred: {e}")
 
     def save_to_file(self):
-        filename = input("Enter the filename to save history (e.g., history.json): ")
+        filename = input("Enter the filename to save history: ")
         with open(filename, 'w') as file:
             json.dump(self.history, file)
         print(f"History saved to {filename}")
