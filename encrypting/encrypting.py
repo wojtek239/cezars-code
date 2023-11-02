@@ -1,5 +1,4 @@
-from const import ALPHABET_SIZE
-import json
+from utils import shift_character
 
 
 class Encryptor:
@@ -10,15 +9,5 @@ class Encryptor:
         """encrypts word with given shift"""
         encrypted_word = ""
         for char in word:
-            if char.isalpha():
-                if char.islower():
-                    base = ord("a")
-                elif char.isupper():
-                    base = ord("A")
-                else:
-                    continue
-                shifted = (ord(char) - base + shift) % ALPHABET_SIZE
-                encrypted_word += chr(base + shifted)
-            else:
-                encrypted_word += char
+            encrypted_word += shift_character(char, 1, shift)
         return encrypted_word

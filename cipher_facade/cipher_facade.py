@@ -1,5 +1,5 @@
 from encrypting.encrypting import Encryptor
-from decrypting.decrytping import Decryptor
+from decrypting.decrypting import Decryptor
 import json
 
 
@@ -13,6 +13,7 @@ class CipherFacade:
             '3': self.show_history,
             '4': self.encrypt_text_from_file_and_save,
             '5': self.save_to_file,
+            '6': self.import_history_from_file,
             '7': self.exit,
         }
         self.initialize()
@@ -30,9 +31,9 @@ class CipherFacade:
             2. Decrypt text
             3. Show history
             4. Encrypt from file and save
-            5. Save to file 
-            6. Import results from file to memory
-            7. Exit 
+            5. Save history to file
+            6. Import history from file
+            7. Exit
             '''
         )
         print(menu)
@@ -57,22 +58,20 @@ class CipherFacade:
         print(f"Given text: {text}")
         print(f"Shift: {shift}")
         print(f"Encrypted text: {encrypted_text}")
-        return encrypted_text
 
     def decrypt_text(self):
         text = input("Please enter text to decrypt: ")
-        shift = int(input("please enter shift: "))
+        shift = int(input("Please enter shift: "))
 
         decrypted_text = Decryptor.decrypt_word_with_key(text, shift)
         self.history.append({
             "input_text": text,
             "shift": shift,
-            "decrypted text": decrypted_text
+            "decrypted_text": decrypted_text
         })
         print(f"Given text: {text}")
         print(f"Shift: {shift}")
         print(f"Decrypted text: {decrypted_text}")
-        return decrypted_text
 
     def show_history(self):
         if not self.history:
@@ -80,12 +79,8 @@ class CipherFacade:
         else:
             print("History:")
             for item in self.history:
-                print(f"Input text: {item['input_text']}")
-                print(f"Shift: {item['shift']}")
-                if 'encrypted_text' in item:
-                    print(f"Encrypted text: {item['encrypted_text']}")
-                if 'decrypted_text' in item:
-                    print(f"Decrypted text: {item['decrypted_text']}")
+                for description, value in item.items():
+                    print(f'{description.capitalize()}: {value}')
                 print("-" * 30)
 
     def encrypt_text_from_file_and_save(self):
@@ -109,11 +104,37 @@ class CipherFacade:
             print(f"An error occurred: {e}")
 
     def save_to_file(self):
+        directory = 'history/'
         filename = input("Enter the filename to save history: ")
-        with open(filename, 'w') as file:
+        with open(directory + filename, 'w') as file:
             json.dump(self.history, file)
         print(f"History saved to {filename}")
 
+    def import_history_from_file(self):
+        filename = input("Enter the filename to import history from: ")
+        try:
+            with open(filename, 'r') as file:
+                imported_history = json.load(file)
+            self.history.extend(imported_history)
+            print(f"History imported from {filename}")
+        except FileNotFoundError:
+            print(f"File '{filename}' not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
     def exit(self):
+        choice = input("Do you want to save the history before exiting? (Y/N): ")
+        if choice.lower() == 'y':
+            self.save_to_file()
         self.__is_running = False
-        print("See You next time!")
+        print("See you next time!")
+
+
+if __name__ == "__main__":
+    app = CipherFacade()
+
+    def exit(self):
+        #TODO
+
+        # GH actions
+        # precommity
