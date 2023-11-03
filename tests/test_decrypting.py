@@ -19,8 +19,7 @@ def test_should_decrypt_word_with_key_negative_shift(self, text, shift,
 @pytest.mark.parametrize("text, shift, expected_result", [
     ("khoor", 3, "hello"),
 ])
-def test_should_decrypt_word_with_key_positive_shift(self, text, shift,
-                                                     expected_result):
+def test_should_decrypt_word_with_key_positive_shift(text, shift, expected_result):
     actual_result = Decryptor.decrypt_word_with_key(text, shift)
     assert actual_result == expected_result
 
@@ -28,8 +27,7 @@ def test_should_decrypt_word_with_key_positive_shift(self, text, shift,
 @pytest.mark.parametrize("text, shift, expected_result", [
     ("cde!123", 2, "abc!123"),
 ])
-def test_should_decrypt_word_with_key_special_characters(self, text, shift,
-                                                     expected_result):
+def test_should_decrypt_word_with_key_special_characters(text, shift, expected_result):
     actual_result = Decryptor.decrypt_word_with_key(text, shift)
     assert actual_result == expected_result
 
@@ -38,8 +36,8 @@ def test_should_decrypt_word_with_key_special_characters(self, text, shift,
     ("Yt gj tw tsw ts gj, ymfy nx ymj vjxyjtrj.", 5, "To be or not to be, that is the "
                                                      "question."),
 ])
-def test_should_decrypt_word_with_key_spaces_and_punctuation(self, text, shift,
-                                                      expected_result):
+def test_should_decrypt_word_with_key_spaces_and_punctuation(text, shift,
+                                                             expected_result):
     actual_result = Decryptor.decrypt_word_with_key(text, shift)
     assert actual_result == expected_result
 
@@ -47,7 +45,7 @@ def test_should_decrypt_word_with_key_spaces_and_punctuation(self, text, shift,
 @pytest.mark.parametrize("text, shift, expected_result", [
     ("abc", 3, "xyz"),
 ])
-def test_should_decrypt_word_with_key_maximum_shift(self, text, shift, expected_result):
+def test_should_decrypt_word_with_key_maximum_shift(text, shift, expected_result):
     actual_result = Decryptor.decrypt_word_with_key(text, shift)
     assert actual_result == expected_result
 
@@ -55,7 +53,7 @@ def test_should_decrypt_word_with_key_maximum_shift(self, text, shift, expected_
 @pytest.mark.parametrize("text, shift, expected_result", [
     ("cęgfhijł", 36, "aąbcćdeę"),
 ])
-def test_should_decrypt_word_with_key_large_shift(self, text, shift, expected_result):
+def test_should_decrypt_word_with_key_large_shift(text, shift, expected_result):
     actual_result = Decryptor.decrypt_word_with_key(text, shift)
     assert actual_result == expected_result
 
@@ -63,8 +61,7 @@ def test_should_decrypt_word_with_key_large_shift(self, text, shift, expected_re
 @pytest.mark.parametrize("text, shift, expected_result", [
     ("ćęłźźó", 3, "ąęćżźń"),
 ])
-def test_should_decrypt_word_with_key_polish_characters(self, text, shift,
-                                                     expected_result):
+def test_should_decrypt_word_with_key_polish_characters(text, shift, expected_result):
     actual_result = Decryptor.decrypt_word_with_key(text, shift)
     assert actual_result == expected_result
 
@@ -72,6 +69,6 @@ def test_should_decrypt_word_with_key_polish_characters(self, text, shift,
 @pytest.mark.parametrize("text, shift, expected_result", [
     (" ", 3, " "),
 ])
-def test_should_decrypt_word_with_key_empty_string(self, text, shift, expected_result):
+def test_should_decrypt_word_with_key_empty_string(text, shift, expected_result):
     actual_result = Decryptor.decrypt_word_with_key(text, shift)
     assert actual_result == expected_result
