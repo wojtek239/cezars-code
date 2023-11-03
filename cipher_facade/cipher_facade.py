@@ -132,9 +132,3 @@ class CipherFacade:
 
 if __name__ == "__main__":
     app = CipherFacade()
-
-    def exit(self):
-        #TODO
-
-        # GH actions
-        # precommity
