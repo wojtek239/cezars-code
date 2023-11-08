@@ -5,8 +5,7 @@ import pytest
 @pytest.mark.parametrize("text, shift, expected_result", [
     ("tloia", -3, "world"),
 ])
-def test_should_decrypt_word_with_key_negative_shift(self, text, shift,
-                                                     expected_result):
+def test_should_decrypt_word_with_key_negative_shift(text, shift, expected_result):
     try:
         Decryptor(shift).decrypt_word_with_key(text)
     except ValueError as e:
@@ -36,8 +35,7 @@ def test_should_decrypt_word_with_key_special_characters(text, shift, expected_r
     ("Yt gj tw tsw ts gj, ymfy nx ymj vjxyjtrj.", 5, "To be or not to be, that is the "
                                                      "question."),
 ])
-def test_should_decrypt_word_with_key_spaces_and_punctuation(text, shift,
-                                                             expected_result):
+def test_should_decrypt_word_with_key_spaces_and_punctuation(text, shift, expected_result):
     actual_result = Decryptor.decrypt_word_with_key(text, shift)
     assert actual_result == expected_result
 

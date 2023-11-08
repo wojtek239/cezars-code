@@ -10,9 +10,11 @@ def shift_character(char, shift_direction, shift):
             base = ord("A")
         else:
             return char
-        shifted = (ord(char) - base + shift_direction * shift) % ALPHABET_SIZE
+        if shift < 0:
+            raise ValueError("Shift must be a positive integer")
+
+        shifted = (ord(char) - base + shift_direction *
+                   (shift % ALPHABET_SIZE)) % ALPHABET_SIZE
+
         return chr(base + shifted)
     return char
-# TODO fstring/ typing
-# napisac exception
-# algorytm shifted zeby dzialal

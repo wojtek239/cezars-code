@@ -13,5 +13,3 @@ class Encryptor:
 
         return encrypted_word
 
-#exepction napisac i obsluzyc
-#poprawic kod do konca alfabetu

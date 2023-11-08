@@ -2,8 +2,8 @@ from encrypting.encrypting import Encryptor
 import pytest
 
 
-@pytest.mark.parametrize("text, shift", [
-    ("world", -3),
+@pytest.mark.parametrize("text, shift, expected_result" [
+    ("world", -3, "tloia"),
 ])
 def test_should_encrypt_word_with_negative_shift(text, shift):
     with pytest.raises(ValueError) as exc_info:
