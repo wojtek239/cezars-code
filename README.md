@@ -16,3 +16,5 @@ How to use:
 2) type shift
 3) encrypt or decrypt
 4) save to history
+
+5) #requirements pip ...

@@ -10,4 +10,8 @@ class Encryptor:
         encrypted_word = ""
         for char in word:
             encrypted_word += shift_character(char, 1, shift)
+
         return encrypted_word
+
+#exepction napisac i obsluzyc
+#poprawic kod do konca alfabetu
