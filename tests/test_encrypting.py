@@ -2,8 +2,8 @@ from encrypting.encrypting import Encryptor
 import pytest
 
 
-@pytest.mark.parametrize("text, shift, expected_result" [
-    ("world", -3, "tloia"),
+@pytest.mark.parametrize("text, shift", [
+    ("world", -3),
 ])
 def test_should_encrypt_word_with_negative_shift(text, shift):
     with pytest.raises(ValueError) as exc_info:
@@ -39,7 +39,7 @@ def test_should_encrypt_word_with_spaces_and_punctuation(text, shift,
 
 
 @pytest.mark.parametrize("text, shift, expected_result", [
-    ("xyz", 3, "abc"),
+    ("aąbcćdeę", 36, "cęgfhijł"),
 ])
 def test_should_encrypt_word_with_maximum_shift(text, shift, expected_result):
     actual_result = Encryptor.encrypt_word_with_key(text, shift)
@@ -47,7 +47,7 @@ def test_should_encrypt_word_with_maximum_shift(text, shift, expected_result):
 
 
 @pytest.mark.parametrize("text, shift, expected_result", [
-    ("aąbcćdeę", 36, "cęgfhijł"),
+    ("xyz", 3, "abc"),
 ])
 def test_should_encrypt_word_with_key_large_shift(text, shift, expected_result):
     actual_result = Encryptor.encrypt_word_with_key(text, shift)
