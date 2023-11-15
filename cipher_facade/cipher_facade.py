@@ -46,32 +46,45 @@ class CipherFacade:
         print("Wrong. Please choose only from 1 to 7.")
 
     def encrypt_text(self):
-        text = input("Please enter text to encrypt: ")
-        shift = int(input("Please enter shift: "))
+        try:
+            text = input("Please enter text to encrypt: ")
+            shift = int(input("Please enter shift: "))
 
-        encrypted_text = Encryptor.encrypt_word_with_key(text, shift)
-        self.history.append({
-            "input_text": text,
-            "shift": shift,
-            "encrypted_text": encrypted_text
-        })
-        print(f"Given text: {text}")
-        print(f"Shift: {shift}")
-        print(f"Encrypted text: {encrypted_text}")
+            if shift < 0:
+                raise ValueError("Shift must be positive integer")
+
+            encrypted_text = Encryptor.encrypt_word_with_key(text, shift)
+            self.history.append({
+                "input_text": text,
+                "shift": shift,
+                "encrypted_text": encrypted_text
+            })
+            print(f"Given text: {text}")
+            print(f"Shift: {shift}")
+            print(f"Encrypted text: {encrypted_text}")
+
+        except ValueError as e:
+            print(f"Error: {e}")
 
     def decrypt_text(self):
-        text = input("Please enter text to decrypt: ")
-        shift = int(input("Please enter shift: "))
+        try:
+            text = input("Please enter text to decrypt: ")
+            shift = int(input("Please enter shift: "))
 
-        decrypted_text = Decryptor.decrypt_word_with_key(text, shift)
-        self.history.append({
-            "input_text": text,
-            "shift": shift,
-            "decrypted_text": decrypted_text
-        })
-        print(f"Given text: {text}")
-        print(f"Shift: {shift}")
-        print(f"Decrypted text: {decrypted_text}")
+            if shift < 0:
+                raise ValueError("Shift must be a positive integer")
+
+            decrypted_text = Decryptor.decrypt_word_with_key(text, shift)
+            self.history.append({
+                "input_text": text,
+                "shift": shift,
+                "decrypted_text": decrypted_text
+            })
+            print(f"Given text: {text}")
+            print(f"Shift: {shift}")
+            print(f"Decrypted text: {decrypted_text}")
+        except ValueError as e:
+            print(f"Error: {e}")
 
     def show_history(self):
         if not self.history:
@@ -89,6 +102,10 @@ class CipherFacade:
             with open(filename, 'r') as file:
                 text = file.read()
             shift = int(input("Please enter shift: "))
+
+            if shift < 0:
+                raise ValueError("Shift must be a positive integer"
+                                 "")
             encrypted_text = Encryptor.encrypt_word_with_key(text, shift)
             self.history.append({
                 "input_text": text,
@@ -100,6 +117,8 @@ class CipherFacade:
             print(f"Encrypted text: {encrypted_text}")
         except FileNotFoundError:
             print(f"File '{filename}' not found.")
+        except ValueError as e:
+            print(f"Error: {e}")
         except Exception as e:
             print(f"An error occurred: {e}")
 

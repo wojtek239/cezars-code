@@ -1,4 +1,4 @@
-from utils import shift_character
+from utils import shift_character, validate_shift
 
 
 class Encryptor:

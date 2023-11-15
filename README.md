@@ -1,9 +1,13 @@
 # Cezars-Code
-![CEZARS-CODE](https://img.shields.io/badge/cezars-code)
-![CEZARS-CODE](https://img.shields.io/badge/python-project)
-![CEZARS-CODE](https://img.shields.io/badge/decryptor-project)
-![CEZARS-CODE](https://img.shields.io/badge/encryptor-project)
-![CEZARS-CODE](https://img.shields.io/badge/Wojtek's-project)
+![CEZARS-CODE](https://img.shields.io/badge/python-3.11%20-blue)
+![CEZARS-CODE](https://img.shields.io/badge/python-Cezar's_Code-green)
+![Downloads](https://img.shields.io/badge/downloads-0-blue)
+![Informational Badge](https://img.shields.io/badge/status-finished-yellow)
+![Maintained with Python](https://img.shields.io/badge/maintained%20with-Python-purple)
+[![Custom Badge](https://ingredient-generation-generated-ingredients.canva.com/2b42e39b-d0ba-4235-af2f-4bb0dd42bcc3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHQLRPZXQM%2F20231114%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231114T204431Z&X-Amz-Expires=151155&X-Amz-Signature=7f6dab038cece4eb8238b6ab82ea4141d918e8aab9e24a8593b7cf997ceafc05&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Thu%2C%2016%20Nov%202023%2014%3A43%3A46%20GMT)
+
+
+
 ## Description
 Cezars-Code is a simple application that allows you to encrypt and decrypt text using the Caesar cipher. The project also offers features for saving history and exporting data to JSON format.
 
