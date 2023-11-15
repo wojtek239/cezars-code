@@ -7,7 +7,7 @@ def validate_shift(shift):
 
 
 def normalize_shift(shift):
-    return shift
+    return shift % ALPHABET_SIZE
 
 
 def shift_character(char, shift_direction, shift):
@@ -30,4 +30,5 @@ def shift_character(char, shift_direction, shift):
 
 # sift ogarnac
 # poprawic utils
+# ugh
 

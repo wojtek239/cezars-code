@@ -40,31 +40,34 @@ class CipherFacade:
 
     def get_and_execute_choice(self):
         user_choice = input("Choose an option: ")
-        self.CHOICES.get(user_choice, self.show_error)()
+        try:
+            self.CHOICES.get(user_choice, self.show_error)()
+        except ValueError as e:
+            print(f"Error: {e}")
+
 
     def show_error(self):
         print("Wrong. Please choose only from 1 to 7.")
 
     def encrypt_text(self):
-        try:
-            text = input("Please enter text to encrypt: ")
-            shift = int(input("Please enter shift: "))
 
-            if shift < 0:
-                raise ValueError("Shift must be positive integer")
+        text = input("Please enter text to encrypt: ")
+        shift = int(input("Please enter shift: "))
 
-            encrypted_text = Encryptor.encrypt_word_with_key(text, shift)
-            self.history.append({
+        if shift < 0:
+            raise ValueError("Shift must be positive integer")
+
+        encrypted_text = Encryptor.encrypt_word_with_key(text, shift)
+        self.history.append({
                 "input_text": text,
                 "shift": shift,
                 "encrypted_text": encrypted_text
-            })
-            print(f"Given text: {text}")
-            print(f"Shift: {shift}")
-            print(f"Encrypted text: {encrypted_text}")
+        })
+        print(f"Given text: {text}")
+        print(f"Shift: {shift}")
+        print(f"Encrypted text: {encrypted_text}")
 
-        except ValueError as e:
-            print(f"Error: {e}")
+
 
     def decrypt_text(self):
         try:

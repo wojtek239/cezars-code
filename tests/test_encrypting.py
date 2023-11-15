@@ -37,10 +37,8 @@ def test_should_encrypt_word_with_special_characters(text, shift, expected_resul
 @pytest.mark.parametrize("text, shift, expected_result", [
     ("To be or not to be, that is the question.", 5,
      "Yt gj tw sty yt gj, ymfy nx ymj vzjxynts."),
-    ("I really like You, probably the most", 7,
-    "P ylhss sprl `v|, wyvihis {ol tvz{"),
-    ("How. could. you, do. this..", 10,
-     "Rya. myvn. cy, ny. ~rs}..")
+    ("I don't mind staying here, do you", 8, "Q lwv'b uqvl abigqvo pmzm, lw gwc"),
+    ("BLA BLA, BLA, BLA. BLA", 3, "EOD EOD, EOD, EOD. EOD")
 ])
 def test_should_encrypt_word_with_spaces_and_punctuation(text, shift,
                                                          expected_result):
@@ -60,7 +58,8 @@ def test_should_encrypt_word_with_maximum_shift(text, shift, expected_result):
 
 @pytest.mark.parametrize("text, shift, expected_result", [
     ("xyz", 3, "abc"),
-    ("tuw", 6, "")
+    ("rstu", 9, "abcd"),
+    ("z", 10, "j")
 ])
 def test_should_encrypt_word_with_key_large_shift(text, shift, expected_result):
     actual_result = Encryptor.encrypt_word_with_key(text, shift)
@@ -86,3 +85,5 @@ def test_should_encrypt_word_with_empty_string(text, shift, expected_result):
     assert actual_result == expected_result
 
 
+# folder json files, pliki z ktorych bd encryptowal i decryptowal
+# testy do fasady czy z enkryptora idzie do historii(zamockowac input)
