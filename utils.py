@@ -28,7 +28,5 @@ def shift_character(char, shift_direction, shift):
         return chr(base + shifted)
     return char
 
-# sift ogarnac
-# poprawic utils
-# ugh
+
 
